@@ -1,8 +1,16 @@
-function notImplemented() {
-  throw new Error('Корзина ещё не реализована. Сначала прочитайте тесты.');
+function addToCart(cart, product, quantity) {
+  if (quantity === 0 || quantity > product.stock) {
+    throw new RangeError;
+  }
+  const item = cart.find((p) => p.id === product.id);
+  if (!item) {
+    cart.push({ ...product, quantity: quantity });
+  } else {
+    item.quantity += quantity;
+  }
+  return cart;
 }
 
-function addToCart() { return notImplemented(); }
 function changeQuantity() { return notImplemented(); }
 function removeFromCart() { return notImplemented(); }
 function calculateCartSubtotal() { return notImplemented(); }
