@@ -6,7 +6,9 @@ function addToCart(cart, product, quantity) {
   if (!item) {
     cart.push({ ...product, quantity: quantity });
   } else {
-    item.quantity += quantity;
+    if (item.quantity < item.stock) {
+      item.quantity += quantity;
+    }
   }
   return cart;
 }
