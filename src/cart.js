@@ -28,7 +28,13 @@ function removeFromCart(cart, id) {
   return cart;
 }
 
-function calculateCartSubtotal() { return notImplemented(); }
+function calculateCartSubtotal(cart) {
+  if (cart.length === 0) return 0;
+  let subtotal = 0;
+  cart.forEach((item) => subtotal += item.price * item.quantity);
+  return subtotal;
+}
+
 function calculateOrderTotal() { return notImplemented(); }
 
 const cartApi = { addToCart, changeQuantity, removeFromCart, calculateCartSubtotal, calculateOrderTotal };
